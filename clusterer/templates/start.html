@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Clusterer</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="{{url_for('static', filename='js/charts.js')}}"></script>
+        <script type="text/javascript" src="{{url_for('static', filename='js/request_handler.js')}}"></script>
+        <script type="text/javascript" src="{{url_for('static', filename='js/button_controller.js')}}"></script>
+    </head>
+    <body>
+
+        <div class="jumbotron text-center">
+            <h1>DER CLUSTERER</h1>
+            <p>Prototyp zum Gruppieren von Unternehmen auf Grundlage der Onlinepräsenz</p> 
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                        <select id="dd_depth">
+                            <option value="none">Depth...</option>
+                            <option value="d1">Only Mainpage</option>
+                            <option value="d16">Depth of 16</option>
+                        </select>
+                    <input type="checkbox" id="stopwords_cv" value="stopwords">Recalculate Stopwords<br>
+                    <button id="loadData">Load Data</button>
+                </div>
+                <div class="col-sm-4">
+                    <input type="checkbox" id="ppo_cb" value="no ppo">no places/persons/organisations<br>
+                    <input type="checkbox" id="noun_cb" value="only nouns">only nouns<br>
+                    <input type="checkbox" id="lem_cb" value="lemmatization">lemmatization<br>
+                    <input type="checkbox" id="split_cb" value="split">split compound words<br>
+                    <input type="checkbox" id="stem_cb" value="stemming">stemming<br>
+
+                    <button id="preProcessData" value="blocked" disabled>PreProcess</button>
+                </div>
+                <div class="col-sm-4">
+                    <label>N-grams min: <input type="number" id="n_ngrams_min" min="1" max="5"></label>
+                    <label>N-grams max: <input type="number" id="n_ngrams_max" min="1" max="5"></label>
+                    <select id="dd_representation">
+                        <option value="none">Representation...</option>
+                        <option value="bow">Bag Of Words</option>
+                        <option value="tfidf">Tf-Idf</option>
+                        <option value="embedding">Word-Embedding</option>
+                    </select>
+                    <select id="dd_algo">
+                        <option value="none">Algorithm...</option>
+                        <option value="Kmeans">K-Means</option>
+                        <option value="HAC">HAC</option>
+                        <option value="Fuzzy">Fuzzy</option>
+                    </select>
+                    <select id="dd_sim">
+                        <option value="none">Similarity...</option>
+                        <option value="euclidean">Euklidisch</option>
+                        <option value="cosine">Cosinus</option>
+                        <option value="jaccard">Jaccard</option>
+                    </select>
+                    <label>Number of Clusters: <input type="number" id="n_cluster" min="1" max="25"></label>
+                    <label>Number of Dimensions: <input type="number" id="n_dim" min="1" max="999999"></label>
+                    <button id="runAlgorithm" value="blocked" disabled>GetChart</button>
+                    <div id="runAlg_div" class="alert alert-warning">
+                        <strong>Warning!</strong> I think u forgot something.
+                    </div>
+                </div>
+            </div>
+            <div id="score_div">
+                <div>
+                    <label>adjusted rand index:</label>
+                    <label id="ari_lbl"></label>
+                </div>
+                <div>
+                    <label>purity:</label>
+                    <label id="purity_lbl"></label>
+                </div>
+                <div>
+                    <label>completeness:</label>
+                    <label id="comp_lbl"></label>
+                </div>
+                <div>
+                    <label>v-measure:</label>
+                    <label id="v_lbl"></label>
+                </div>
+            </div>
+            <div id="bubble_chart_div" style="width: 900px; height: 500px;"></div>
+            <div id="migma_div" style="width: 900px; height: 500px;"></div>
+
+        </div>
+    </body>
+</html>
