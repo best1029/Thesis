@@ -130,12 +130,13 @@ class PreProcessor:
         
                 res[domain] = " ".join(worte_stemmed) 
 
+                dict2file(word2stem, ".\\src\\Data\\PreProcessing", "word2stem.json")
+                dict2file(stem2word, ".\\src\\Data\\PreProcessing", "stem2word.json")
+
             else:
                 res[domain] = " ".join(words)
             print(type(res[domain]))
-
-        dict2file(word2stem, ".\\src\\Data\\PreProcessing", "word2stem.json")
-        dict2file(stem2word, ".\\src\\Data\\PreProcessing", "stem2word.json")
+  
         dict2file(res, ".\\src\\Data\\PreProcessing", "aufbereiteteDaten.json")
     
         print(type(res))

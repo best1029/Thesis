@@ -75,6 +75,6 @@ class Embedding:
                     vec = self.model[word] * weights[word]
             vecs[domain] = vec
         
-        return vecs
+        return vecs, vectorizer
 
     

@@ -1,8 +1,8 @@
-from sklearn.metrics.pairwise import cosine_similarity
+from scipy.spatial.distance import pdist, squareform
+import numpy as np
 
 def calculate_cosine_distance(data):
-    dist = 1 - cosine_similarity(data)
-
-    print(type(dist))
-    
-    return dist
+    d = pdist(data, 'cosine')
+    dist = 1 - d
+    dist = np.nan_to_num(dist)
+    return squareform(dist)

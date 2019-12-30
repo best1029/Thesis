@@ -68,7 +68,7 @@ class Backend:
         elif representation == "embedding":
             if self.embedding is None:
                 self.embedding = Embedding(train_data = trainData, default_model = baseModel)
-            vec_dic = self.embedding.transform_docs2vec(df, min_ngram, max_ngram)
+            vec_dic, vectorizer = self.embedding.transform_docs2vec(df, min_ngram, max_ngram)
             data = pd.DataFrame(list(vec_dic.items()), columns = ["domain", "vec"])
         else:
             raise Exception("The representation '" + representation + "' is not supported")
