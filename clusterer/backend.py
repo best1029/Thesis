@@ -8,6 +8,7 @@ from src.dataRepresentation.vector.embedding import Embedding
 from src.algorithm.kMeans import Kmeans
 from src.algorithm.hac import Hac
 from src.algorithm.fuzzy import Fuzzy
+from src.algorithm.optics import Optics
 
 from src.evaluation.evaluation import *
 
@@ -95,9 +96,11 @@ class Backend:
         if algorithm == "Kmeans":
             model = Kmeans(data, n_cluster, vectorizer)
         elif algorithm == "HAC":
-            model = Hac(data, n_cluster, vectorizer, similarity = sim)
+            model = Hac(data, n_cluster, similarity = sim)
         elif algorithm == "Fuzzy":
             model = Fuzzy(data, n_cluster, similarity = sim)
+        elif algorithm == "Optics":
+            model = Optics(data, similarity = sim)
         else:
             raise Exception("The algorithm '" + algorithm + "' is  not supported")
         

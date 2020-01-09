@@ -12,12 +12,10 @@
         <script type="text/javascript" src="{{url_for('static', filename='js/button_controller.js')}}"></script>
     </head>
     <body>
-
         <div class="jumbotron text-center">
             <h1>DER CLUSTERER</h1>
             <p>Prototyp zum Gruppieren von Unternehmen auf Grundlage der Onlinepräsenz</p> 
         </div>
-
         <div class="container">
             <div class="row">
                 <div class="col-sm-4">
@@ -35,7 +33,6 @@
                     <input type="checkbox" id="lem_cb" value="lemmatization">lemmatization<br>
                     <input type="checkbox" id="split_cb" value="split">split compound words<br>
                     <input type="checkbox" id="stem_cb" value="stemming">stemming<br>
-
                     <button id="preProcessData" value="blocked" disabled>PreProcess</button>
                 </div>
                 <div class="col-sm-4">
@@ -52,6 +49,7 @@
                         <option value="Kmeans">K-Means</option>
                         <option value="HAC">HAC</option>
                         <option value="Fuzzy">Fuzzy</option>
+                        <option value="Optics">Optics</option>
                     </select>
                     <select id="dd_sim">
                         <option value="none">Similarity...</option>
@@ -87,7 +85,6 @@
             </div>
             <div id="bubble_chart_div" style="width: 900px; height: 500px;"></div>
             <div id="migma_div" style="width: 900px; height: 500px;"></div>
-
         </div>
     </body>
 </html>

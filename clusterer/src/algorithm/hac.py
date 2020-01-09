@@ -7,7 +7,7 @@ from src.similarity.cosine import calculate_cosine_distance
 from src.similarity.jaccard import calculate_jaccard_similarity
 
 class Hac:
-    def __init__(self, data, n_clu, vectorizer, similarity):
+    def __init__(self, data, n_clu, similarity):
         
         link = "ward"
         cluster_data = data['vec'].tolist()
