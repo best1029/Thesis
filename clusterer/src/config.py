@@ -1,12 +1,11 @@
 import os
 dirname = os.path.dirname(__file__)
 
-path_bereinigtesCrawlErgebnis_16 = os.path.join(dirname, r'data/technischBereinigt/bereinigtesCrawlergebnis.json')
 path_bereinigtesCrawlErgebnis_Startseiten = os.path.join(dirname, r'data/technischBereinigt/bereinigtesCrawlergebnis_Startseiten.json')
-path_goldstandard = os.path.join(dirname, r'data/goldstandard/goldstandard.json')
-
-#path_bereinigtesCrawlErgebnis_16 = os.path.join(dirname, r'data/technischBereinigt/bereinigtesCrawlergebnis.json')
 path_bereinigtesCrawlErgebnis_Startseiten_Evaluation = os.path.join(dirname, r'data/technischBereinigt/bereinigtesCrawlergebnis_Startseiten_Evaluation.json')
+path_bereinigtesCrawlErgebnis_16 = os.path.join(dirname, r'data/technischBereinigt/bereinigtesCrawlergebnis_16.json')
+path_bereinigtesCrawlErgebnis_16_Evaluation = os.path.join(dirname, r'data/technischBereinigt/bereinigtesCrawlergebnis_Evaluation.json')
+path_goldstandard = os.path.join(dirname, r'data/goldstandard/goldstandard.json')
 path_goldstandard_evaluation = os.path.join(dirname, r'data/goldstandard/goldstandard_evaluation.json')
 
 path_aufbereitet = os.path.join(dirname, r'data/preProcessing/aufbereiteteDaten.json')

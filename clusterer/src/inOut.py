@@ -10,6 +10,10 @@ def getData(depth = None, path = None):
             path = conf.path_bereinigtesCrawlErgebnis_Startseiten
         elif depth == "d16":
             path = conf.path_bereinigtesCrawlErgebnis_16
+        elif depth == "d1_eva":
+            path = conf.path_bereinigtesCrawlErgebnis_Startseiten_Evaluation
+        elif depth == "d16_eva":
+            path = conf.path_bereinigtesCrawlErgebnis_16_Evaluation
 
     with open(path, "r") as json_file:
         raw_data = json.load(json_file)

@@ -58,10 +58,6 @@ class Embedding:
             word_weights, vectorizer = getTfIdf(df_documente, min_ngram, max_ngram)
         else:
             raise Exception("The representation '" + base + "' is  not supported")
-        
-        print("abd")
-        print(word_weights)
-        print(type(word_weights))
 
         words = word_weights.columns.tolist()
         vecs = {}    

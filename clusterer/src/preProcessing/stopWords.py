@@ -7,8 +7,6 @@ import src.config as conf
 
 def getStopWords(docs = None, idf_limit_min = conf.default_idf_limit_min):
 
-    print("get stopwords mit")
-
     stop_words = stopwords.words('german')
     logger.info("Basic-Stopwords loaded")
 

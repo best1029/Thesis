@@ -24,12 +24,3 @@ class Fuzzy:
                 self.labels.append(np.argmax(a))
             else:
                 self.labels.append(10 * n_clu)
-
-    def getFrontendScores(self):
-        return getScores(self.domains, self.labels)
-
-    def getFrontendBubbelChartData(self):
-        return getBubbelChartData(self.vecs,  self.domains, self.labels)
-
-    def getFrontendMigrationMatrix(self):
-        return getMigrationMatrix(self.domains, self.labels)

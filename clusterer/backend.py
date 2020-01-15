@@ -10,6 +10,11 @@ from src.algorithm.hac import Hac
 from src.algorithm.fuzzy import Fuzzy
 from src.algorithm.optics import Optics
 
+from src.dataRepresentation.modelRepresentation import getBubbelChartData, getMigrationMatrix
+from src.evaluation.evaluation import getScores
+
+from src.data.goldstandard.goldstandard import getGoldstandard
+
 from src.evaluation.evaluation import *
 
 from src.dataRepresentation.svd import svd
@@ -26,13 +31,15 @@ class Backend:
         self.preProcessor = PreProcessor()
         logger.info("Preprocessor initiated")
 
-    def loadRawData(self, depth, path = None, data = None):
+    def loadRawData(self, depth, goldstandard, path = None, data = None):
         if data is not None:
             self.rawData = data
         elif path is not None:
             self.rawData = getData(path = path)
         else:
             self.rawData = getData(depth = depth)
+
+        self.goldstandard = getGoldstandard(goldstandard)
 
         logger.info("raw Data loaded")
 
@@ -48,17 +55,11 @@ class Backend:
         logger.info("Stopwords loaded")
 
     def getProcessedData(self, no_ppo = True, only_noun = True, stem = False, lem = False, split = False): 
-        print(split)
-        print("oben steht der werte von split, sollte bool sein")
         self.cleanData = self.preProcessor.text_preprocess(self.cleanDocs, self.stop_words, no_ppo = no_ppo, only_nouns=only_noun, stemming=stem, lemmatize=lem, split = split)
         return self.cleanData
 
     def _transformData(self, representation, n_dim, min_ngram, max_ngram, trainData = None, baseModel = "wiki"):
-
-        print(self.cleanData.items())
         df = pd.DataFrame(list(self.cleanData.items()), columns=['domain', 'content'])
-
-        print(df.head())
 
         if representation == "bow":
             bow_matrix, vectorizer = getBOW(df, min_ngram, max_ngram)
@@ -95,6 +96,22 @@ class Backend:
 
         if algorithm == "Kmeans":
             model = Kmeans(data, n_cluster, vectorizer)
+
+            #TODO -> löschen
+            werte = []
+            samples = 1000
+            for i in range(samples):
+                model_bello = Kmeans(data, n_cluster, vectorizer)
+                scores_borsch = getScores(model_bello, self.goldstandard)
+                werte.append(scores_borsch["ari"])
+            schnitt = sum(werte) / samples
+            print("durchschnittliches ergebniss bei " + str(samples) +" durläufen:")
+            print(schnitt)
+
+            print(werte)
+            #------------------------
+
+
         elif algorithm == "HAC":
             model = Hac(data, n_cluster, similarity = sim)
         elif algorithm == "Fuzzy":
@@ -106,9 +123,9 @@ class Backend:
         
         logger.info("Model loaded")
 
-        bubbleChartData = model.getFrontendBubbelChartData()
-        migMa = model.getFrontendMigrationMatrix()
-        scores = model.getFrontendScores()
+        bubbleChartData = getBubbelChartData(model, self.goldstandard)
+        migMa = getMigrationMatrix(model, self.goldstandard)
+        scores = getScores(model, self.goldstandard)
 
         logger.info("Frontenddata calculated")
 

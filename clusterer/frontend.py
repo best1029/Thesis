@@ -19,12 +19,13 @@ def rawdata():
     if request.method == 'POST':
         path = request.form["path"]
         depth = request.form["depth"]
+        goldstandard = request.form["goldstandard"]
         calc_sw = 'true' == request.form["cal_stopwords"]
 
         if not path:
-            backend.loadRawData(depth)
+            backend.loadRawData(depth, goldstandard)
         else:
-            backend.loadRawData(path=path)
+            backend.loadRawData(goldstandard, path=path)
         logger.info("raw Data loadad, next loading stopwords")
         backend.loadStopWords(calc_sw)
 

@@ -17,12 +17,3 @@ class Optics:
         self.domains = data['domain'].tolist()
         self.vecs = data['vec'].tolist()
         self.labels = self.model.labels_.tolist()
-
-    def getFrontendScores(self):
-        return getScores(self.domains, self.labels)
-
-    def getFrontendBubbelChartData(self):
-        return getBubbelChartData(self.vecs,  self.domains, self.labels)
-
-    def getFrontendMigrationMatrix(self):
-        return getMigrationMatrix(self.domains, self.labels)

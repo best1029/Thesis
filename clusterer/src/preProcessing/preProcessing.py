@@ -104,12 +104,10 @@ class PreProcessor:
                 x = requests.post(conf.url_split, data = myobj)
                 res_req = json.loads(x.text) 
                 words = res_req['text']
-                print("splitty")
-                print(words)
             
             # all lower
             words = [wort.lower() for wort in words]
-            print(words)
+
             # exclude stopwords 
             words = [wort for wort in words if wort.lower() not in stopwords]
 
@@ -135,9 +133,7 @@ class PreProcessor:
 
             else:
                 res[domain] = " ".join(words)
-            print(type(res[domain]))
   
         dict2file(res, ".\\src\\Data\\PreProcessing", "aufbereiteteDaten.json")
     
-        print(type(res))
         return res

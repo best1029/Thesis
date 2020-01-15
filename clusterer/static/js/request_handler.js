@@ -26,14 +26,22 @@ $(document).ready(function(){
     $("#loadData").click(function(){
         stopwords = stopwords_cv.checked
         depth = depth_dd.options[depth_dd.selectedIndex].value;
+        if (depth.substr(depth.length - 3) == "eva"){
+            goldstandard = "evaluation"
+        }
+        else{
+            goldstandard = "test_data"
+        }
+        
         change_btns(true);
         path = ""
         console.log("calc stopwords: " + stopwords)
+        console.log("button clicked")
         console.log("asking for data")
         $.ajax({
             type: "POST",
             url: "http://localhost:5000/rawdata",
-            data: {path:path, depth:depth, cal_stopwords:stopwords},
+            data: {path:path, depth:depth, cal_stopwords:stopwords, goldstandard:goldstandard},
             success: function(data){
                 console.log(data)
                 preprocess_btn.value = "unblocked"

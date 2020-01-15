@@ -3,9 +3,10 @@ import pandas as pd
 from sklearn.metrics.cluster import adjusted_rand_score, homogeneity_score, completeness_score, v_measure_score
 from sklearn.metrics import accuracy_score
 
-from src.data.goldstandard.goldstandard import goldstandard
+def getScores(model, goldstandard):
 
-def getScores(domains, cluster_pred):
+    domains = model.domains
+    cluster_pred = model.labels
 
     cluster_true = [goldstandard[dom] for dom in domains]
     res = {}
