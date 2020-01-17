@@ -1,6 +1,7 @@
 import os
 dirname = os.path.dirname(__file__)
 
+#path_bereinigtesCrawlErgebnis_Startseiten = os.path.join(dirname, r'data/technischBereinigt/TeilC.json')
 path_bereinigtesCrawlErgebnis_Startseiten = os.path.join(dirname, r'data/technischBereinigt/bereinigtesCrawlergebnis_Startseiten.json')
 path_bereinigtesCrawlErgebnis_Startseiten_Evaluation = os.path.join(dirname, r'data/technischBereinigt/bereinigtesCrawlergebnis_Startseiten_Evaluation.json')
 path_bereinigtesCrawlErgebnis_16 = os.path.join(dirname, r'data/technischBereinigt/bereinigtesCrawlergebnis_16.json')

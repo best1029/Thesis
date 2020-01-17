@@ -24,6 +24,7 @@ from src.logger import logger
 import src.config as conf
 
 import numpy as np
+import json
 
 class Backend:
     def __init__(self):
@@ -98,17 +99,21 @@ class Backend:
             model = Kmeans(data, n_cluster, vectorizer)
 
             #TODO -> löschen
-            werte = []
+            werte_ari = []
+            werte_v = []
             samples = 1000
             for i in range(samples):
                 model_bello = Kmeans(data, n_cluster, vectorizer)
                 scores_borsch = getScores(model_bello, self.goldstandard)
-                werte.append(scores_borsch["ari"])
-            schnitt = sum(werte) / samples
+                werte_ari.append(scores_borsch["ari"])
+                werte_v.append(scores_borsch["v_measure"])
+            #schnitt = sum(werte) / samples
             print("durchschnittliches ergebniss bei " + str(samples) +" durläufen:")
-            print(schnitt)
+            #print(schnitt)
 
-            print(werte)
+            print(werte_ari)
+            print("-----------------------------------")
+            print(werte_v)
             #------------------------
 
 
@@ -116,6 +121,25 @@ class Backend:
             model = Hac(data, n_cluster, similarity = sim)
         elif algorithm == "Fuzzy":
             model = Fuzzy(data, n_cluster, similarity = sim)
+
+            #TODO -> löschen
+            werte_ari = []
+            werte_v = []
+            samples = 1000
+            for i in range(samples):
+                model_bello = Fuzzy(data, n_cluster, similarity = sim)
+                scores_borsch = getScores(model_bello, self.goldstandard)
+                werte_ari.append(scores_borsch["ari"])
+                werte_v.append(scores_borsch["v_measure"])
+            #schnitt = sum(werte) / samples
+            print("durchschnittliches ergebniss bei " + str(samples) +" durläufen:")
+            #print(schnitt)
+
+            print(werte_ari)
+            print("-----------------------------------")
+            print(werte_v)
+            #------------------------
+
         elif algorithm == "Optics":
             model = Optics(data, similarity = sim)
         else:

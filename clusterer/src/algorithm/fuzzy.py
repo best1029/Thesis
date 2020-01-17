@@ -6,7 +6,7 @@ from src.evaluation.evaluation import getScores
 from src.dataRepresentation.svd import svd
 
 class Fuzzy:
-    def __init__(self, data, n_clu, similarity, fuzzy_tolerance = 0.7):
+    def __init__(self, data, n_clu, similarity, fuzzy_tolerance = 0.3):
 
         vecs = data['vec'].tolist() 
 
@@ -18,9 +18,13 @@ class Fuzzy:
         self.vecs = data['vec'].tolist()
 
         u_trans = np.transpose(u)
-        self.labels = []
-        for a in u_trans:
-            if np.amax(a) >= fuzzy_tolerance:
-                self.labels.append(np.argmax(a))
-            else:
-                self.labels.append(10 * n_clu)
+
+        self.labels = np.argmax(u, axis=0)
+        # print(self.labels)
+
+        # self.labels = []
+        # for a in u_trans:
+        #     if np.amax(a) >= fuzzy_tolerance:
+        #         self.labels.append(np.argmax(a))
+        #     else:
+        #         self.labels.append(10 * n_clu)
