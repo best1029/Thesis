@@ -20,11 +20,3 @@ class Kmeans:
         self.domains = data['domain'].tolist()
         self.vecs = data['vec'].tolist()
         self.labels = self.model.labels_.tolist()
-
-        # order_centroids = self.model.cluster_centers_.argsort()[:, ::-1]
-        # terms = vectorizer.get_feature_names()
-
-        # for i in range(n_clu):
-        #     print("Cluster %d:" % i),
-        #     for ind in order_centroids[i, :10]:
-        #         print(' %s' % terms[ind])

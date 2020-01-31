@@ -20,11 +20,3 @@ class Fuzzy:
         u_trans = np.transpose(u)
 
         self.labels = np.argmax(u, axis=0)
-        # print(self.labels)
-
-        # self.labels = []
-        # for a in u_trans:
-        #     if np.amax(a) >= fuzzy_tolerance:
-        #         self.labels.append(np.argmax(a))
-        #     else:
-        #         self.labels.append(10 * n_clu)

@@ -97,49 +97,10 @@ class Backend:
 
         if algorithm == "Kmeans":
             model = Kmeans(data, n_cluster, vectorizer)
-
-            #TODO -> löschen
-            werte_ari = []
-            werte_v = []
-            samples = 1000
-            for i in range(samples):
-                model_bello = Kmeans(data, n_cluster, vectorizer)
-                scores_borsch = getScores(model_bello, self.goldstandard)
-                werte_ari.append(scores_borsch["ari"])
-                werte_v.append(scores_borsch["v_measure"])
-            #schnitt = sum(werte) / samples
-            print("durchschnittliches ergebniss bei " + str(samples) +" durläufen:")
-            #print(schnitt)
-
-            print(werte_ari)
-            print("-----------------------------------")
-            print(werte_v)
-            #------------------------
-
-
         elif algorithm == "HAC":
             model = Hac(data, n_cluster, similarity = sim)
         elif algorithm == "Fuzzy":
             model = Fuzzy(data, n_cluster, similarity = sim)
-
-            #TODO -> löschen
-            werte_ari = []
-            werte_v = []
-            samples = 1000
-            for i in range(samples):
-                model_bello = Fuzzy(data, n_cluster, similarity = sim)
-                scores_borsch = getScores(model_bello, self.goldstandard)
-                werte_ari.append(scores_borsch["ari"])
-                werte_v.append(scores_borsch["v_measure"])
-            #schnitt = sum(werte) / samples
-            print("durchschnittliches ergebniss bei " + str(samples) +" durläufen:")
-            #print(schnitt)
-
-            print(werte_ari)
-            print("-----------------------------------")
-            print(werte_v)
-            #------------------------
-
         elif algorithm == "Optics":
             model = Optics(data, similarity = sim)
         else:

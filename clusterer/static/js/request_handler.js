@@ -64,12 +64,13 @@ $(document).ready(function(){
         console.log(" - lemmatization: " + lem);
         console.log(" - stemming: " + stem);
         console.log(" - split: " + split);
-    
+
         $.ajax({
             type: "POST",
             url: "http://localhost:5000/preprocess",
             data: {no_ppo:no_ppo, only_nouns:only_nouns, lemmatization:lem, stemming:stem, split:split},
             success: function(data){
+
                 console.log(data)                            
                 run_btn.value = "unblocked"
                 change_btns(false)
@@ -100,11 +101,13 @@ $(document).ready(function(){
         console.log(" - max n-grams: " + ngrams_max);
         console.log(" - number of clusters: " + n_cluster);
         console.log(" - vector dimensions: " + n_dim);
+
         $.ajax({
             type: "POST",
             url: "http://localhost:5000/res",
             data: {representation:repr, algorithm:algo, similarity:simi, min_ngram:ngrams_min, max_ngram:ngrams_max, n_cluster:n_cluster, n_dim:n_dim},
             success: function(data){
+
                 console.log(data)
                 json_data = JSON.parse(data)
 

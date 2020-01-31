@@ -18,8 +18,6 @@ import operator
 from collections import Counter 
 
 class Embedding:
-    # es macht nur sinn die funktion mit train_data und default_model != wiki aufzurufen, 
-    # wenn nicht schon mit train_data trainiert wurde
     def __init__(self, train_data = None, default_model = "wiki"):
 
         model = None
@@ -28,10 +26,6 @@ class Embedding:
         if default_model == "wiki":
             model = FastText.load_fasttext_format(conf.path_model_wiki)
             model.save(conf.path_model_extended)
-        elif default_model == "extended":
-            raise NotImplementedError()
-            #model = FastTextKeyedVectors.load(conf.pfad_model_extended)
-            #model = FastText.load(conf.pfad_model_extended)
         print("model geladen")
 
         self.model = model

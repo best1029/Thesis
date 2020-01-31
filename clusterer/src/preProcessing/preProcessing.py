@@ -119,9 +119,6 @@ class PreProcessor:
                 for wort in words:
                     w_stem = self.stemmer.stem(wort)
 
-                    # hier gehen informationen verloren, da ein wort z.b bau (aus baum) im dict abgespeichert wird
-                    # und später von dem wort bau (aus bauer) überschrieben wird -> bau ist dann immer bauer (auch wenn es ursprünglich baum war)
-
                     word2stem[wort] = w_stem
                     stem2word[w_stem] = wort
                     worte_stemmed.append(w_stem)
