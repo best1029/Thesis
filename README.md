@@ -34,24 +34,29 @@ This project was initiated to investigate the possibility of clustering companie
 The challenging aspects of this study include the acquisition and extraction of data from websites, particularly information regarding the economic sector. Some companies, especially those from different sectors but with similar themes, proved difficult to assign to clusters.
 
 ## Project Structure
+The main project logic can be found in cluster/src/. splitCompoundWordsApi works as a separate API for splitting compound words since the required package was not compatible with the Python version of the main logic.
 
-- `data_acquisition`: Contains scripts and tools for collecting text data from company websites.
-- `data_preprocessing`: Involves data cleaning and preparation for clustering.
-- `clustering_algorithms`: Implements various clustering algorithms, including K-Means, Hierarchical Clustering, and DBSCAN.
+In cluster/src/
+- `preProcessing`: Involves data cleaning and preparation for clustering. 
+- `dataRepresentation`: Implements different approaches to representing documents as vectors.
+- `similarity`: Contains implementations of different similarity measures.
+- `algorithm`: Implements various clustering algorithms, including K-Means, Hierarchical Clustering, and DBSCAN.
 - `evaluation`: Provides tools for evaluating the quality of the clustering results.
-- `results`: Stores the clustering outcomes and insights.
 
 ## Usage
 
-1. Begin by collecting text data from the companies' websites. Scripts in the `data_acquisition` directory can be used for this purpose.
-2. Preprocess the acquired data to ensure consistency and quality (see `data_preprocessing`).
-3. Apply different clustering algorithms from the `clustering_algorithms` directory.
-4. Evaluate the clustering results using the tools in the `evaluation` directory.
-5. Review and analyze the results in the `results` directory.
+1. Begin by collecting text data from the companies' websites. [Apache Nutch](https://nutch.apache.org/) has been used for this process step.
+2. Preprocess the acquired data to ensure consistency and quality (see `preProcessing`).
+3. Select a data representation (SVD, MDS, BOW, TfIdf, ...).
+4. Select a similarity measure for the data (Jaccard, Cosinus, ...).
+5. Apply different clustering algorithms from the `algorithm` directory.
+6. Evaluate the clustering results using the tools in the `evaluation` directory.
+
+All those steps and the results can modified with a simple webpage contained in the 'templates' directory after starting the server.
 
 ## Data Acquisition
 
-Data was collected solely from company websites. This involved extracting text content relevant to the economic sector of the company. Specialized web scraping and data retrieval techniques were employed.
+Data was collected solely from company websites. This involved extracting the text from the main page of each company.
 
 ## Data Preprocessing
 
@@ -63,11 +68,7 @@ Various clustering algorithms were implemented, allowing flexibility in the choi
 
 ## Evaluation
 
-A gold standard dataset was created to serve as a benchmark for evaluating the quality of the clustering results. The adjusted rand index was used as a metric to assess the consistency of the clustering with the gold standard.
-
-## Results
-
-The project's results and insights can be found in the `results` directory. Visualizations and summary reports help interpret the clustered economic sectors.
+A gold standard dataset was created to serve as a benchmark for evaluating the quality of the clustering results. Among others, the adjusted rand index was used as a metric to assess the consistency of the clustering with the gold standard.
 
 ## Conclusion
 
