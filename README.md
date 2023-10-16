@@ -18,7 +18,6 @@ This project was developed in response to the needs of EBID Service AG to dynami
 - [Results](#results)
 - [Conclusion](#conclusion)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Introduction
 
