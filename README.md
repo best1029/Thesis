@@ -15,7 +15,6 @@ This project was developed in response to the needs of EBID Service AG to dynami
 - [Data Preprocessing](#data-preprocessing)
 - [Clustering Algorithms](#clustering-algorithms)
 - [Evaluation](#evaluation)
-- [Results](#results)
 - [Conclusion](#conclusion)
 - [Contributing](#contributing)
 
