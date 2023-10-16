@@ -77,11 +77,3 @@ This study demonstrated the high feasibility of clustering companies into their 
 ## Contributing
 
 Contributions to this project are welcome. Please feel free to open issues, fork the repository, and submit pull requests to enhance functionality, add new features, or improve documentation.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE), allowing for the use, modification, and distribution of this code.
-
----
-
-Thank you for exploring the potential of clustering companies into economic sectors based on their online presence. If you have any questions or suggestions, please don't hesitate to reach out.
