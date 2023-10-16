@@ -47,8 +47,8 @@ In cluster/src/
 
 1. Begin by collecting text data from the companies' websites. [Apache Nutch](https://nutch.apache.org/) has been used for this process step.
 2. Preprocess the acquired data to ensure consistency and quality (see `preProcessing`).
-3. Select a data representation (SVD, MDS, BOW, TfIdf, ...).
-4. Select a similarity measure for the data (Jaccard, Cosinus, ...).
+3. Select a 'dataRepresentation' (SVD, MDS, BOW, TfIdf, ...).
+4. Select a 'similarity' measure for the data (Jaccard, Cosinus, ...).
 5. Apply different clustering algorithms from the `algorithm` directory.
 6. Evaluate the clustering results using the tools in the `evaluation` directory.
 
