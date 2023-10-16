@@ -4,7 +4,7 @@
 
 This project was developed in response to the needs of EBID Service AG to dynamically cluster a database of companies into different economic sectors using only data extracted from their websites. The primary objective was to assess the feasibility of clustering companies into sectors based on their online presence and to determine the most effective clustering algorithm. The study involved data acquisition, data preprocessing, similarity measurement, and clustering. A gold standard dataset was created to evaluate the clustering results. 
 
-![image](\Process Overview.png)
+![image](Process Overview.png)
 
 ## Table of Contents
 
